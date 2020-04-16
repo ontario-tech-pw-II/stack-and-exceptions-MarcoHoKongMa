@@ -11,6 +11,7 @@ bool is_str_operator(string); // returns true if the input parameter is an opera
 
 int main() 
 {
+    int value3 = 0, value2 = 0, value1 = 0;
     string in;
     stack<string> st;   // stack definition
 
@@ -20,10 +21,15 @@ int main()
     {
         if(is_str_digit(in)){
             // add your code here
+            st.push(in);
         }
         else if(is_str_operator(in))
         {
             // add your code here 
+            value1 = stoi(st.top());
+            st.pop();
+            value2 = stoi(st.top());
+            st.pop();
 
             switch(in[0])
             {
@@ -46,7 +52,7 @@ int main()
             }
 
             // add your code here
-
+            st.push(to_string(value3));
         }
         cin >> in;
     }
